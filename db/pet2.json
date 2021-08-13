@@ -4,7 +4,7 @@
     "id": 9999977754784,
     "name": "Cachorro"
   },
-  "name": "OlaP",
+  "name": "OlaPTestes",
   "photoUrls": [
     "string"
   ],
@@ -14,5 +14,5 @@
       "name": "staT30"
     }
   ],
-  "status": "available"
+  "status": "sold"
 }

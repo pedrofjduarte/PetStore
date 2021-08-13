@@ -23,7 +23,7 @@ public class Pet {
     }
 
     //Incluir  - Create - Post
-    @Test
+    @Test(priority = 1)
     public void incluirPet() throws IOException {
         String jsonBody = lerJson( "db/pet1.json");
 
@@ -40,12 +40,64 @@ public class Pet {
         .then() //Então
                 .log().all()
                 .statusCode(200)
-                .body("name", is("Snoopy"))
+                .body("name", is("OlaP"))
                 .body("status", is("available"))
                 .body("category.name", is("Cachorro"))
-                .body("tags.name", contains("staT3"))
+                .body("tags.name", contains("staT30"))
         ;
     }
 
+    @Test(priority = 2)
+    public void consultarPet(){
+        String petId = "303056789";
 
+        given()
+                .contentType("application/json")
+                .log().all()
+        .when()
+                .get(uri + "/" + petId)
+        .then()
+                .log().all()
+                .statusCode(200)
+                .body("name", is("OlaP"))
+                .body("category.name", is("Cachorro"))
+                .body("status", is("available"))
+        ;
+    }
+
+    @Test (priority = 3)
+    public void alterarPet() throws IOException {
+        String jsonBody = lerJson( "db/pet2.json");
+
+        given()
+                .contentType("application/json")
+                .log().all()
+                .body(jsonBody)
+        .when()
+                .put(uri)
+        .then()
+                .log().all()
+                .statusCode(200)
+                .body("name", is("OlaPTestes"))
+                .body("status", is("sold"))
+        ;
+    }
+
+    @Test(priority = 4)
+    public void excluirPet(){
+        String petId = "303056789";
+
+        given()
+                .contentType("application/json")
+                .log().all()
+        .when()
+                .delete(uri + "/" + petId)
+        .then()
+                .log().all()
+                .statusCode(200)
+                .body("code", is (200))
+                .body("type", is ("unknown"))
+                .body("message", is(petId))
+        ;
+    }
 }
