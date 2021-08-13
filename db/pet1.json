@@ -1,8 +1,8 @@
 {
   "id": 0,
   "category": {
-    "id": 100,
-    "name": "Dog"
+    "id": 10557430,
+    "name": "Cachorro"
   },
   "name": "Snoopy",
   "photoUrls": [
@@ -11,7 +11,7 @@
   "tags": [
     {
       "id": 20212,
-      "name": "sta"
+      "name": "staT3"
     }
   ],
   "status": "available"
